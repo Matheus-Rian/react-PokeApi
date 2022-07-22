@@ -1,5 +1,12 @@
+import { Header } from './components/Header';
+import { Search } from './components/Search';
+import './styles/global.scss';
+
 export function App() {
   return (
-    <h1>Hello World</h1>
+    <>
+      <Header />
+      <Search />
+    </>
   )
 }
