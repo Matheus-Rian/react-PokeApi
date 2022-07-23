@@ -1,0 +1,15 @@
+.button {
+  padding: 12px 40px;
+  box-shadow: 0px 3px 6px #92207242;
+  background: var(--orange-500);
+  border-radius: 8px;
+  
+  font-size: 18px;
+  color: #fff;
+  font-weight: 600;
+  transition: filter 0.2s ease-in;
+
+  &:hover {
+    filter: brightness(1.25);
+  }
+}
