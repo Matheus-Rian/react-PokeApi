@@ -1,5 +1,6 @@
 import styles from './styles.module.scss';
 import { HiOutlineSearch } from 'react-icons/hi';
+
 export function Search() {
   return (
     <div className={styles.searchContainer}>
