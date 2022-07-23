@@ -1,7 +1,56 @@
 .searchContainer {
   background-image: url('../../assets/images/fundo-busca.png');
+  background-size: cover;
   width: 100%;
   height: 18rem;
   margin-top: -4rem;
   background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.boxSearch {
+  margin-top: 4rem;
+
+  width: 70%;
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  input {
+    position: relative;
+    max-width: 1046px;
+    width: 100%;
+    border: none;
+    height: 4.6875rem;
+    background: #fff;
+    border: 2px solid #fff;
+    border-radius: 8px;
+    outline: none;
+    padding: 0 24px;
+    font-size: 24px;
+    transition: border-color 0.2s ease-in;
+    appearance: none;
+
+    &:focus {
+      border-color: var(--gray-500);
+    }
+  }
+
+  button {
+    position: absolute;
+    right: 24px;
+    background: none;
+    border: none;
+
+    svg {
+      width: 2.75rem;
+      height: 2.75rem;
+      color: var(--gray-700);
+    }
+  }
 }
