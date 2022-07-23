@@ -45,12 +45,16 @@
     position: absolute;
     right: 24px;
     background: none;
-    border: none;
+    color: var(--gray-700);
+    transition: filter 0.2s ease-in;
+
+    &:hover {
+      filter: brightness(0.8);
+    }
 
     svg {
       width: 2.75rem;
       height: 2.75rem;
-      color: var(--gray-700);
     }
   }
 }
