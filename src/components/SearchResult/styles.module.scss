@@ -1,0 +1,18 @@
+.resultContainer {
+  margin: 0 auto;
+  margin-top: 40px;
+  max-width: 1046px;
+  width: 100%;
+  padding: 0 16px;
+  
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h1 {
+      font-weight: 400;
+      color: var(--purple-700);
+    }
+  }
+}
