@@ -1,3 +1,4 @@
+import { PokemonsList } from '../models/PokemonsList.model';
 import { HttpClient } from './utils/HttpClient';
 
 class PokemonsService {
@@ -5,7 +6,7 @@ class PokemonsService {
     private httpClient = new HttpClient('https://pokeapi.co/api/v2/'),
   ) { }
 
-  async listPokemons() {
+  async listPokemons(): Promise<PokemonsList> {
     return this.httpClient.get('pokemon');
   }
 }
