@@ -1,25 +1,24 @@
 import styles from './styles.module.scss';
 import { HiOutlineTrash, HiOutlinePencil } from 'react-icons/hi';
 import { useEffect, useState } from 'react';
-import PokemonsService from '../../services/PokemonsService';
 import pokeball from '../../assets/images/poke-ball.png';
 import { PokemonsList } from '../../models/PokemonsList.model';
 import { useSearchPokemon } from '../../store';
+import { usePokemons } from '../../hooks/usePokemons';
 
 export function Card() {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
-  const [pokemonsList, setPokemonsList] = useState<PokemonsList[]>();
   const [pokemonsFilter, setPokemonsFilter] = useState<PokemonsList[]>();
   const result = useSearchPokemon(s => s.search.result);
+
+  const { fetchPokemons, pokemonsList } = usePokemons(20);
 
   useEffect(() => {
     async function loadPokemons() {
       try {
         setIsLoading(true);
-
-        const listPokemons = await PokemonsService.listPokemons();
-        setPokemonsList(listPokemons.results);
+        fetchPokemons(1);
       } catch {
         setHasError(true);
       } finally {
