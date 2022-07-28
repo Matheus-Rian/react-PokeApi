@@ -6,12 +6,8 @@ export function usePokemons(limit: number) {
   const [pokemonsList, setPokemonsList] = useState<PokemonsList[]>([]);
 
   async function fetchPokemons(offset: number) {
-    const virtualOffset = ((offset - 1) * limit) <= 0
-      ? 0
-      : ((offset - 1) * limit)
-
-    const response = await PokemonsService.listPokemons(virtualOffset, limit);
-    setPokemonsList(response.results);
+    const response = await PokemonsService.listPokemons(offset, limit);
+    setPokemonsList(prevState => [...prevState ,...response.results]);
   }
 
   return {
