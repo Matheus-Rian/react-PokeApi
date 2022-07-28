@@ -6,8 +6,8 @@ class PokemonsService {
     private httpClient = new HttpClient('https://pokeapi.co/api/v2/'),
   ) { }
 
-  async listPokemons(): Promise<ResponsePokemonsList> {
-    return this.httpClient.get('pokemon');
+  async listPokemons(offset: number, pageLimit: number): Promise<ResponsePokemonsList> {
+    return this.httpClient.get(`pokemon?offset=${offset}&limit=${pageLimit}`);
   }
 }
 
