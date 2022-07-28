@@ -3,14 +3,18 @@ import styles from './styles.module.scss';
 
 interface ButtonProps {
   children: React.ReactNode;
+  handleClick: () => void;
 }
 
-export function Button({ children }: ButtonProps) {
+export function Button({ 
+  children, 
+  handleClick = () => window.alert('Funcionalidade não implementada')
+}: ButtonProps) {
   return (
     <button 
       type='button' 
       className={styles.button} 
-      onClick={() => window.alert('Funcionalidade não implementada')}
+      onClick={() => handleClick()}
     >
       { children }
     </button>
