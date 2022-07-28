@@ -5,14 +5,20 @@ import pokeball from '../../assets/images/poke-ball.png';
 import { PokemonsList } from '../../models/PokemonsList.model';
 import { useSearchPokemon } from '../../store';
 import { usePokemons } from '../../hooks/usePokemons';
+import { Button } from '../Button';
 
 export function Card() {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
-  const [pokemonsFilter, setPokemonsFilter] = useState<PokemonsList[]>();
+  const [pokemonsFilter, setPokemonsFilter] = useState<PokemonsList[]>([]);
   const result = useSearchPokemon(s => s.search.result);
+  const [countPage, setCountPage] = useState(0);
 
   const { fetchPokemons, pokemonsList } = usePokemons(20);
+
+  useEffect(() => {
+    fetchPokemons(countPage);
+  }, [countPage]);
 
   useEffect(() => {
     async function loadPokemons() {
@@ -53,8 +59,8 @@ export function Card() {
         <h1>Error</h1>
       )}
 
-      {pokemonsFilter?.map(({ name }) => (
-        <div key={name} className={styles.card}>
+      {pokemonsFilter.map(({ name }, index) => (
+        <div key={index} className={styles.card}>
           <img src={pokeball} alt={`pokeball ${name}`} />
           <p>{name}</p>
           <footer>
@@ -69,6 +75,14 @@ export function Card() {
           </footer>
         </div>
       ))}
+
+      <div className={styles.boxButton}>
+        {pokemonsFilter.length > 0 && (
+          <Button handleClick={() => setCountPage(countPage + 1)}>
+            Carregar mais
+          </Button>
+        )}
+      </div>
     </div>
   )
 }
