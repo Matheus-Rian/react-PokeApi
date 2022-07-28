@@ -7,7 +7,7 @@ class PokemonsService {
   ) { }
 
   async listPokemons(offset: number, pageLimit: number): Promise<ResponsePokemonsList> {
-    return this.httpClient.get(`pokemon?offset=${offset}&limit=${pageLimit}`);
+    return this.httpClient.get('pokemon', { params: { offset, pageLimit }});
   }
 }
 
