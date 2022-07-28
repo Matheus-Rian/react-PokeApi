@@ -15,10 +15,10 @@ export class HttpClient {
     });
   }
 
-  async get(path: string) {
+  async get(path: string, params: any) {
     const api = this.createAxios();
 
-    const response = await api.get(path);
+    const response = await api.get(path, params);
 
     if (response.data) 
       return response.data;
